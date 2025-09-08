@@ -1,0 +1,51 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 8 sept 2025, 9:35:21 a. m.
+    Author     : cmjyt
+*/
+
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 29 ago 2025, 4:29:42 p. m.
+    Author     : cmjyt
+*/
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin:0;
+}
+
+h1 {
+    padding: 10px;
+    margin: 5px;
+    background-color: lightcoral;
+}
+
+div {
+    background-color: whitesmoke;
+    max-width: 400px;
+    margin: 20px auto;
+    height: 400px;
+    box-shadow: 0 0 6px 0px rgba(0,0,0,0.5);
+    border-radius: 10px;
+}
+
+div h2 {
+    text-align: center;
+    padding: 15px 0;
+}
+
+p {
+    text-align: center;
+}
+
+img {
+   width: 20%;
+}
