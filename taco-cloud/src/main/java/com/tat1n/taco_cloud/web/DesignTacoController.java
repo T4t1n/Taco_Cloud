@@ -1,7 +1,10 @@
 
-package com.tat1n.taco_cloud;
+package com.tat1n.taco_cloud.web;
 
+import com.tat1n.taco_cloud.Ingredient;
 import com.tat1n.taco_cloud.Ingredient.Type;
+import com.tat1n.taco_cloud.Taco;
+import com.tat1n.taco_cloud.TacoOrder;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -75,6 +78,8 @@ public class DesignTacoController {
     @PostMapping
     public String processTaco(Taco taco, 
             @ModelAttribute TacoOrder tacoOrder) {
-        
+      tacoOrder.addTaco(taco);
+      log.info("Processing taco: {}", taco);
+      return "redirect:/orders/current";
     }
 }
