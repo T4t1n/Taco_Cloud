@@ -6,6 +6,7 @@
         <title>TODO supply a title</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" th:href="@{/css/styles.css}"/>
     </head>
     <body>
         
@@ -27,7 +28,7 @@
             <input type="text" th:field="*{deliveryName}"/>
             <span class="validationError"
                   th:if="${#fields.hasErrors('deliveryName')}"
-                  th:erros="*{deliveryName}">Name Error</span>
+                  th:errors="*{deliveryName}">Name Error</span>
             <br/>
             
             <label for="deliveryStreet">Street address: </label>
@@ -46,10 +47,16 @@
             
             <label for="deliveryState">State: </label>
             <input type="text" th:field="*{deliveryState}" />
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('deliveryState')}"
+                  th:errors="*{deliveryState}">State Error</span>
             <br />
             
             <label for="deliveryZip">Zip code: </label>
             <input type="text" th:field="*{deliveryZip}" />
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('deliveryZip')}"
+                  th:errors="*{deliveryZip}">Zip Error</span>
             <br />
             
             <h3>Here' s how I'll pay...</h3>
@@ -62,10 +69,16 @@
             
             <label for="ccExpiration">Expiration: </label>
             <input type="text" th:field="*{ccExpiration}" />
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('ccExpiration')}"
+                  th:errors="*{ccExpiration}">Expiration Error</span>
             <br />
             
             <label for="ccCVV">CVV: </label>
             <input type="text" th:field="*{ccCVV}" />
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('ccCVV')}"
+                  th:errors="*{ccCVV}"></span>
             <br />
 
             <input type="submit" value="Submit Oreder" />
