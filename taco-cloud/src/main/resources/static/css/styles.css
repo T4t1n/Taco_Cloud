@@ -7,6 +7,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : cmjyt
 */
 
+
+/*####### RESET #######*/
+
+img {
+    max-width: 100%;
+}
+
 .validationError {
     color: red;
 }
+

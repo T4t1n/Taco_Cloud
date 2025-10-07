@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author Jaimisky
  */
 @Controller
-public class HomeController {
+public class HomeControllerdelete {
     
     @GetMapping("/")
     public String home() {

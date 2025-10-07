@@ -11,6 +11,7 @@
     <body>
         
         <form method="POST" th:action="@{/orders}" th:object="${tacoOrder}">
+            
             <h1>Order your taco creations!</h1>
             
             <img th:src="@{/images/taco.png}" />
@@ -22,6 +23,10 @@
                     <span th:text="${taco.name}">taco name</span>
                 </li>
             </ul>
+            
+            <span class="validationError"
+                  th:if="${#fields.hasErrors()}">Please correct the problems
+                                                and resubmit.</span>
             
             <h3>Deliver my taco masterpieces to...</h3>
             <label for="deliveryName">Name: </label>

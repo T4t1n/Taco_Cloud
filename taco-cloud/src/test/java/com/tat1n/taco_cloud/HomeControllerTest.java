@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
  *
  * @author cmjyt
  */
-@WebMvcTest(HomeController.class)
+@WebMvcTest()
 public class HomeControllerTest {
     
     @Autowired
