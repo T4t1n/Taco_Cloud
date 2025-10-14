@@ -1,0 +1,15 @@
+#spring.application.name=taco-cloud
+spring:
+    applicacion:
+        name: taco-cloud
+        
+
+
+
+#spring.datasource.generate-unique-name=false
+#spring.datasource.name=tacoCloud
+    datasource:
+        ganerate-unique-name: false
+        name: tacoCloud
+        
+        #consequently, the database URL will be "jdbc:h2_mem:tacocloud"

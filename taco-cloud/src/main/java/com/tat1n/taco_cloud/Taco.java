@@ -3,6 +3,7 @@ package com.tat1n.taco_cloud;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import java.util.Date;
 import java.util.List;
 import lombok.Data;
 
@@ -12,6 +13,10 @@ import lombok.Data;
  */
 @Data
 public class Taco {
+    
+    private Long id;
+    
+    private Date createdAt = new Date();
     
     @NotNull
     @Size(min=5, message="Name must be at least 5 characters long")
