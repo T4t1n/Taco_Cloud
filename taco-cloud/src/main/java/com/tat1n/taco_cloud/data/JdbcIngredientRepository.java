@@ -50,7 +50,16 @@ public class JdbcIngredientRepository implements IngredientRepository {
       return new Ingredient(
       row.getString("id"),
      row.getString("name"),
-         Ingredient.Type.valueOf(row.getString("type")));
-        
+     Ingredient.Type.valueOf(row.getString("type")));    
+    }
+    
+    @Override
+    public Ingredient save(Ingredient ingredient) {
+        jdbcTemplate.update(
+            "insert into Ingredient (id, name, type) velues (?, ?. ?)",
+                ingredient.getId(),
+                ingredient.getName(),
+                ingredient.getType().toString());
+        return ingredient;
     }
 }

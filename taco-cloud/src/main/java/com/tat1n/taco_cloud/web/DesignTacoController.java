@@ -5,11 +5,13 @@ import com.tat1n.taco_cloud.Ingredient;
 import com.tat1n.taco_cloud.Ingredient.Type;
 import com.tat1n.taco_cloud.Taco;
 import com.tat1n.taco_cloud.TacoOrder;
+import com.tat1n.taco_cloud.data.IngredientRepository;
 import jakarta.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -32,6 +34,15 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes("tacoOrder")
 public class DesignTacoController {
     
+    private final IngredientRepository ingredientRepo;
+    
+    @Autowired
+    public DesignTacoController(
+    IngredientRepository ingredientRepo) {
+        this.ingredientRepo = ingredientRepo;
+    }
+  /*  
+    ########### Using hardcoded values ###########
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
         List<Ingredient> ingredients = Arrays.asList(
@@ -53,6 +64,21 @@ public class DesignTacoController {
                     filterByType(ingredients, type));
         }
     }
+    */
+    
+    /* instead of using hardcoded values */
+    
+    @ModelAttribute
+    public void addIngredientsToModel(Model model) {
+        Iterable<Ingredient> ingredients = ingredientRepo.findAll();
+        Type[] types = Ingredient.Type.values();
+        for (Type type : types) {
+            model.addAttribute(type.toString().toLowerCase(),
+                    filterByType(ingredients, type));
+        }
+    }
+    
+    
     
     @ModelAttribute(name = "tacoOrder")
     public TacoOrder order() {
@@ -70,7 +96,7 @@ public class DesignTacoController {
     }
     
     private Iterable<Ingredient> filterByType(
-        List<Ingredient> ingredients, Type type) {
+        List<Ingredient> ingredients, Type type) { /*En el libro es list aqui lo cambio a iterble para que me funcione cuando lo utilize*/
         return ingredients
                 .stream()
                 .filter(x -> x.getType().equals(type))
