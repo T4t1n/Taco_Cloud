@@ -10,6 +10,7 @@ import jakarta.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -96,11 +97,16 @@ public class DesignTacoController {
     }
     
     private Iterable<Ingredient> filterByType(
-        List<Ingredient> ingredients, Type type) { /*En el libro es list aqui lo cambio a iterble para que me funcione cuando lo utilize*/
-        return ingredients
-                .stream()
-                .filter(x -> x.getType().equals(type))
-                .collect(Collectors.toList());
+        Iterable<Ingredient> ingredients, Type type) { /*En el libro es list aqui lo cambio a iterble para que me funcione cuando lo utilize*/
+        return StreamSupport.stream(ingredients.spliterator(), false)
+                    .filter(i -> i.getType().equals(type))
+                    .collect(Collectors.toList());
+
+
+//        return ingredients
+//                .stream()
+//                .filter(x -> x.getType().equals(type))
+//                .collect(Collectors.toList());
     }
     
     @PostMapping
