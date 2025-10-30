@@ -7,6 +7,7 @@ import com.tat1n.taco_cloud.Taco;
 import com.tat1n.taco_cloud.TacoOrder;
 import com.tat1n.taco_cloud.data.IngredientRepository;
 import jakarta.validation.Valid;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -71,7 +72,9 @@ public class DesignTacoController {
     
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
-        Iterable<Ingredient> ingredients = ingredientRepo.findAll();
+        List<Ingredient> ingredients = new ArrayList<>();
+        ingredientRepo.findAll().forEach(i-> ingredients.add(i));
+        
         Type[] types = Ingredient.Type.values();
         for (Type type : types) {
             model.addAttribute(type.toString().toLowerCase(),
@@ -97,9 +100,9 @@ public class DesignTacoController {
     }
     
     private Iterable<Ingredient> filterByType(
-        Iterable<Ingredient> ingredients, Type type) { /*En el libro es list aqui lo cambio a iterble para que me funcione cuando lo utilize*/
-        return StreamSupport.stream(ingredients.spliterator(), false)
-                    .filter(i -> i.getType().equals(type))
+        List<Ingredient> ingredients, Type type) { /*En el libro es list aqui lo cambio a iterble para que me funcione cuando lo utilize*/
+        return ingredients.stream()
+                    .filter(x -> x.getType().equals(type))
                     .collect(Collectors.toList());
 
 
