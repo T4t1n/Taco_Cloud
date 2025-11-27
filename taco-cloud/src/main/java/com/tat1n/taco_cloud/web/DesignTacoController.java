@@ -72,8 +72,8 @@ public class DesignTacoController {
     
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
-        List<Ingredient> ingredients = new ArrayList<>();
-        ingredientRepo.findAll().forEach(i-> ingredients.add(i));
+        Iterable<Ingredient> ingredients = 
+        ingredientRepo.findAll();
         
         Type[] types = Ingredient.Type.values();
         for (Type type : types) {
@@ -100,8 +100,8 @@ public class DesignTacoController {
     }
     
     private Iterable<Ingredient> filterByType(
-        List<Ingredient> ingredients, Type type) { /*En el libro es list aqui lo cambio a iterble para que me funcione cuando lo utilize*/
-        return ingredients.stream()
+        Iterable<Ingredient> ingredients, Type type) { /*En el libro es list aqui lo cambio a iterble para que me funcione cuando lo utilize*/
+        return StreamSupport.stream(ingredients.spliterator(), false)
                     .filter(x -> x.getType().equals(type))
                     .collect(Collectors.toList());
 
