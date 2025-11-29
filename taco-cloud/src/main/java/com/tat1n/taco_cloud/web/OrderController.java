@@ -43,7 +43,7 @@ public class OrderController {
         
        // log.info("Order submitted: {}", order);
        orderRepo.save(order);
-        sessionStatus.setComplete();
+       sessionStatus.setComplete();
         
         return "redirect:/";
     }
