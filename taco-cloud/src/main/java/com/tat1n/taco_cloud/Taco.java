@@ -7,14 +7,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 /**
  *
  * @author Jaimisky
  */
 @Data
+@Table
+@EqualsAndHashCode(exclude = "createdAt")
 public class Taco {
-    
+    @Id
     private Long id;
     
     private Date createdAt = new Date();
